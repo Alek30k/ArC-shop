@@ -23,21 +23,21 @@ const Wrapper = styled.div`
   ${mobile({ width: "75%" })}
 `;
 
+const Title = styled.h1`
+  font-size: 24px;
+  font-weight: 300;
+`;
+
 const Form = styled.form`
   display: flex;
   flex-wrap: wrap;
-`;
-
-const Title = styled.h1`
-font-size. 24px;
-font-weight: 300;
 `;
 
 const Input = styled.input`
   flex: 1;
   min-width: 40%;
   margin: 20px 10px 0px 0px;
-  padding: 6px;
+  padding: 10px;
 `;
 
 const Agreement = styled.span`

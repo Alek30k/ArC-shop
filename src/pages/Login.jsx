@@ -51,7 +51,6 @@ const Button = styled.button`
   color: white;
   cursor: pointer;
   margin-bottom: 10px;
-
   &:disabled {
     color: green;
     cursor: not-allowed;
@@ -65,6 +64,10 @@ const Link = styled.a`
   cursor: pointer;
 `;
 
+const Error = styled.span`
+  color: red;
+`;
+
 const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -75,11 +78,6 @@ const Login = () => {
     e.preventDefault();
     login(dispatch, { username, password });
   };
-
-  const Error = styled.span`
-    color: red;
-  `;
-
   return (
     <Container>
       <Wrapper>

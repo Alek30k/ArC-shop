@@ -10,9 +10,9 @@ import { useEffect, useState } from "react";
 import { userRequest } from "../requestMethods";
 import { useHistory } from "react-router";
 
+// const KEY = process.env.REACT_APP_STRIPE;
 const KEY =
   "pk_test_51LWR1rCTlhsOX9GfhjESQ1bu9wYMwpoNoxZcSF3aR0QQAzzsH2uyewThu2I4hy1oFWGfq48N1jkTSb65or0fvC0900JuYognmI";
-
 const Container = styled.div``;
 
 const Wrapper = styled.div`
@@ -251,7 +251,7 @@ const Cart = () => {
             </SummaryItem>
             <StripeCheckout
               name="Lama Shop"
-              image="https://user-images.githubusercontent.com/101005998/190654889-f7553f5a-f702-4208-9a2b-760ea5b3b381.jpg"
+              image="https://avatars.githubusercontent.com/u/1486366?v=4"
               billingAddress
               shippingAddress
               description={`Your total is $${cart.total}`}
