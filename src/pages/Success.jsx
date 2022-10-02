@@ -1,6 +1,8 @@
+// import { red } from "@material-ui/core/colors";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { useLocation } from "react-router";
+import { Link } from "react-router-dom";
 import { userRequest } from "../requestMethods";
 
 const Success = () => {
@@ -35,14 +37,30 @@ const Success = () => {
         height: "100vh",
         display: "flex",
         flexDirection: "column",
+        fontSize: "20px",
         alignItems: "center",
         justifyContent: "center",
       }}
     >
+      <Link to={"/"}>
+        <button
+          style={{
+            padding: 13,
+            marginTop: 20,
+            backgroundColor: "teal",
+            color: "white",
+            fontSize: "25px",
+            borderRadius: "10px",
+            cursor: "pointer",
+            marginBottom: "20px",
+          }}
+        >
+          Successfull
+        </button>
+      </Link>
       {orderId
         ? `Order has been created successfully. Your order number is ${orderId}`
         : `Successfull. Your order is being prepared...`}
-      <button style={{ padding: 10, marginTop: 20 }}>Go to Homepage</button>
     </div>
   );
 };

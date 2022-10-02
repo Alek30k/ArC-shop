@@ -7,11 +7,12 @@ import { mobile2 } from "../responsive";
 import { mobile3 } from "../responsive";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import Profile from "./Profile";
 
 const Container = styled.div`
   height: 60px;
   ${mobile({ height: "50px" })};
-  ${mobile2({ height: "55px" })}
+  ${mobile2({ height: "55px" })};
 `;
 
 const Wrapper = styled.div`
@@ -19,8 +20,12 @@ const Wrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  ${mobile({ padding: "10px 0px" })}
-  ${mobile3({ padding: "10px 10px", marginRight: "20px" })}
+  ${mobile({ padding: "10px 0px" })};
+  ${mobile3({ padding: "10px 10px", marginRight: "20px" })};
+
+  && a {
+    text-decoration: none;
+  }
 `;
 
 const Left = styled.div`
@@ -52,6 +57,7 @@ const Input = styled.input`
 const Center = styled.div`
   flex: 1;
   text-align: center;
+  cursor: pointer;
 `;
 
 const Logo = styled.h1`
@@ -59,6 +65,10 @@ const Logo = styled.h1`
   ${mobile({ fontSize: "24px" })}
   ${mobile2({ fontSize: "24px" })}
   ${mobile3({ fontSize: "18px" })}
+`;
+
+const Myprofile = styled.h1`
+  display: flex;
 `;
 
 const Right = styled.div`
@@ -81,6 +91,7 @@ const MenuItem = styled.div`
 
 const Navbar = () => {
   const quantity = useSelector((state) => state.cart.quantity);
+  const user = useSelector((state) => state.user.currentUser);
 
   return (
     <Container>
@@ -92,24 +103,42 @@ const Navbar = () => {
             <Search style={{ color: "gray", fontSize: 16 }} />
           </SearchContainer>
         </Left>
-        <Center>
-          <Logo>ArC</Logo>
-        </Center>
-        <Right>
-          <Link to="/register" className="link">
-            <MenuItem>REGISTER</MenuItem>
-          </Link>
-          <Link to="/login" className="link">
-            <MenuItem>SIGN IN</MenuItem>
-          </Link>
-          <Link to="/cart">
-            <MenuItem>
-              <Badge badgeContent={quantity} color="primary">
-                <ShoppingCartOutlined />
-              </Badge>
-            </MenuItem>
-          </Link>
-        </Right>
+        <Link to="/">
+          <Center>
+            <Logo>ArC</Logo>
+          </Center>
+        </Link>
+        <Link to="/cart">
+          <MenuItem>
+            <Badge badgeContent={quantity} color="primary">
+              <ShoppingCartOutlined />
+            </Badge>
+          </MenuItem>
+        </Link>
+
+        {user && Object.keys(user || {})?.length > 0 ? (
+          <Right>
+            <Myprofile>
+              <Profile />
+              {/* <Link to="/cart">
+                <MenuItem>
+                  <Badge badgeContent={quantity} color="primary">
+                    <ShoppingCartOutlined />
+                  </Badge>
+                </MenuItem>
+              </Link> */}
+            </Myprofile>
+          </Right>
+        ) : (
+          <Right>
+            <Link to="/register">
+              <MenuItem>REGISTER</MenuItem>
+            </Link>
+            <Link to="/login">
+              <MenuItem>SIGN IN</MenuItem>
+            </Link>
+          </Right>
+        )}
       </Wrapper>
     </Container>
   );
